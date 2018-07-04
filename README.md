@@ -22,7 +22,7 @@ wiki = WikiCorpus(self.inp, lemmatize=False, dictionary={})
 ```bash
 python3.5 train.py <dump_path> <trained_model_storing_path> <model_name>
 ```
-#### Model names should be one of:
+#### Supported model names are:
 <p>"w2v_sg": Word2Vec with Skip-Gram </br>
 "w2v_cbow": Word2Vec with CBOW</br>
 "ft_sg": FastText with Skip-Gram</br>
@@ -46,7 +46,6 @@ random_seed (default 48)
 Tested on Python 3.5
 <p><a href="https://radimrehurek.com/gensim/"> gensim </a></p>
 <p><a href="https://www.nltk.org/"> NLTK </a></p>
-<p><a href="http://scikit-learn.org/"> scikit-learn </a></p>
 
 ## Useful Tutorials
 ### Siraj Raval Word2Vec Live tutorial
