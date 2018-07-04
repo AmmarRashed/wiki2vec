@@ -22,7 +22,7 @@ wiki = WikiCorpus(self.inp, lemmatize=False, dictionary={})
 ```bash
 python3.5 train.py <dump_path> <trained_model_storing_path> <model_name>
 ```
-#### Model names should be one of:
+#### Supported model names are:
 <p>"w2v_sg": Word2Vec with Skip-Gram </br>
 "w2v_cbow": Word2Vec with CBOW</br>
 "ft_sg": FastText with Skip-Gram</br>
