@@ -16,14 +16,25 @@ if __name__ == '__main__':
         print("Model not specified, using FastText Skip-Gram by default")
 
         model = "ft_sg"
+    try:
+        use_defaults = bool(sys.argv[4])
+    except IndexError:
+        use_defaults = False
 
-
-    window = int(input("Window size (default 300): ") or 300)
-    min_word_count = int(input("min_word_count (default 3): ") or 3)
-    workers = int(input("Workers (default all): ") or multiprocessing.cpu_count())
-    subsampling = float(input("Subsampling ratio (default 1e-3): ") or 0.001)
-    negative = int(input("Negative samples (default 5): ") or 5)
-    seed = int(input("random_seed (default 48): ") or 48)
+    if use_defaults:
+        window = 300
+        min_word_count = 3
+        workers = multiprocessing.cpu_count()
+        subsampling = 0.001
+        negative = 5
+        seed = 48
+    else:
+        window = int(input("Window size (default 300): ") or 300)
+        min_word_count = int(input("min_word_count (default 3): ") or 3)
+        workers = int(input("Workers (default all): ") or multiprocessing.cpu_count())
+        subsampling = float(input("Subsampling ratio (default 1e-3): ") or 0.001)
+        negative = int(input("Negative samples (default 5): ") or 5)
+        seed = int(input("random_seed (default 48): ") or 48)
 
     we = WordEmbeddings(inp, out,
                         model_name=model,
