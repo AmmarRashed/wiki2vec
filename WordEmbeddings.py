@@ -11,17 +11,16 @@ from joblib import Parallel, delayed  # for parallel computation
 import nltk
 from gensim.models.phrases import Phraser, Phrases
 
+
 class WordEmbeddings(object):
     def __init__(self, inp, out, model_name="ft_sg",
                  window=300, min_count=3,
                  workers=multiprocessing.cpu_count(),
                  sample=0.001,
                  negative=5,
-                 seed=48,
-                 lang="en"):
+                 seed=48):
 
         self.model_name = model_name
-        self.lang = lang
 
         if "w2v" in model_name:
             from gensim.models.word2vec import Word2Vec
@@ -68,14 +67,8 @@ class WordEmbeddings(object):
         return wiki
 
     def get_sentences(self):
-        raw_corpus = self.clean_wiki()
 
-        if self.lang == "en":
-            nltk.download("punkt")
-            tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
-            raw_sentences = tokenizer.tokenize(raw_corpus.lower())
-        else:
-            raw_sentences = raw_corpus.lower().split(".")
+        raw_sentences = self.clean_wiki()
 
         tokenized_sentences = Parallel(n_jobs=self.workers)(
             delayed(self.sentence_to_wordlist)(

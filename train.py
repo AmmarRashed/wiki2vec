@@ -1,5 +1,5 @@
 import sys, multiprocessing
-from .WordEmbeddings import WordEmbeddings
+from WordEmbeddings import WordEmbeddings
 
 models = {"{0}_{1}".format(model, variation) for model in ["w2v", "ft"] for variation in {"sg","cbow"}}
 
