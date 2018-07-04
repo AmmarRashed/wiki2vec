@@ -46,6 +46,7 @@ random_seed (default 48)
 Tested on Python 3.5
 <p><a href="https://radimrehurek.com/gensim/"> gensim </a></p>
 <p><a href="https://www.nltk.org/"> NLTK </a></p>
+<p><a href="https://pythonhosted.org/joblib/"> joblib </a></p>
 
 ## Useful Tutorials
 ### Siraj Raval Word2Vec Live tutorial
