@@ -30,6 +30,8 @@ python3.5 train.py <dump_path> <trained_model_storing_path> <model_name>
 </p>
 
 <p> The script should ask for the following parameters:</p>
+
+
 ```python
 Window size (default 300)
 min_word_count (default 3)
@@ -38,6 +40,7 @@ Subsampling ratio (default 1e-3)
 Negative samples (default 5)
 random_seed (default 48)
 ```
+
 
 ## Dependancies
 Tested on Python 3.5
