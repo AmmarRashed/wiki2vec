@@ -48,8 +48,7 @@ class WordEmbeddings(object):
     def sentence_to_wordlist(raw: str):
         return re.sub("[^a-zA-Z]", " ", raw).split()
 
-    def clean_wiki(self, output_path="data"):
-        wiki = WikiCorpus(self.inp, lemmatize=False, dictionary={})
+    def clean_wiki(self, wiki, output_path="data"):
         if not os.path.exists(output_path):
             os.makedirs(output_path)
 
@@ -64,11 +63,8 @@ class WordEmbeddings(object):
                 n = i
         print("Finished saving {0:,} articles".format(n))
 
-        return wiki
-
     def get_sentences(self):
-
-        raw_sentences = self.clean_wiki()
+        raw_sentences = WikiCorpus(self.inp, lemmatize=False, dictionary={})
 
         tokenized_sentences = Parallel(n_jobs=self.workers)(
             delayed(self.sentence_to_wordlist)(
