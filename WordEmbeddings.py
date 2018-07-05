@@ -45,10 +45,6 @@ class WordEmbeddings(object):
     def _sentence_to_wordlist(raw: str):
         return re.sub("[^a-zA-Z]", " ", raw).split()
 
-    @staticmethod
-    def _(sentence):
-        return sentence
-
     def clean_wiki(self, output_path="data"):
         wiki = WikiCorpus(self.inp, lemmatize=False, dictionary={})
         if not os.path.exists(output_path):
