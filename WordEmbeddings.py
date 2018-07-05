@@ -6,9 +6,6 @@ import re
 import time
 
 from gensim.corpora import WikiCorpus
-from joblib import Parallel, delayed  # for parallel computation
-
-import nltk
 from gensim.models.phrases import Phraser, Phrases
 
 
@@ -45,10 +42,15 @@ class WordEmbeddings(object):
         self.seed = seed
 
     @staticmethod
-    def sentence_to_wordlist(raw: str):
+    def _sentence_to_wordlist(raw: str):
         return re.sub("[^a-zA-Z]", " ", raw).split()
 
-    def clean_wiki(self, wiki, output_path="data"):
+    @staticmethod
+    def _(sentence):
+        return sentence
+
+    def clean_wiki(self, output_path="data"):
+        wiki = WikiCorpus(self.inp, lemmatize=False, dictionary={})
         if not os.path.exists(output_path):
             os.makedirs(output_path)
 
@@ -63,12 +65,12 @@ class WordEmbeddings(object):
                 n = i
         print("Finished saving {0:,} articles".format(n))
 
-    def get_sentences(self):
-        raw_sentences = WikiCorpus(self.inp, lemmatize=False, dictionary={})
+        return list(wiki.get_texts())
 
-        tokenized_sentences = Parallel(n_jobs=self.workers)(
-            delayed(self.sentence_to_wordlist)(
-                raw_sentence) for raw_sentence in raw_sentences)
+    def get_sentences(self):
+        wiki = WikiCorpus(self.inp, lemmatize=False, dictionary={})
+
+        tokenized_sentences = list(wiki.get_texts())
 
         phrases = Phrases(tokenized_sentences)
         bigram = Phraser(phrases)
