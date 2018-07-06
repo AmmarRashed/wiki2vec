@@ -1,40 +1,43 @@
-import sys, multiprocessing
+import argparse, multiprocessing
 from WordEmbeddings import WordEmbeddings
 
 models = {"{0}_{1}".format(model, variation) for model in ["w2v", "ft"] for variation in {"sg","cbow"}}
 
 if __name__ == '__main__':
-    program = sys.argv[0]
-    inp = sys.argv[1]
-    out = sys.argv[2]
-    try:
-        model = sys.argv[3]
-        if model not in models:
-            print("Model not specified, using FastText Skip-Gram by default")
-            raise IndexError
-    except IndexError:
-        print("Model not specified, using FastText Skip-Gram by default")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("i",help="path to the input bz2 wiki dump")
+    parser.add_argument("o",help="path to store the trained model in")
+    parser.add_argument("--ft", help="Use FastText (default 1)", default=1, type=int)
+    parser.add_argument("--sg", help="Use SkipGram (default 1)", default=1, type=int)
+    parser.add_argument("--window", help="context window size (default 300)", default=300, type=int)
+    parser.add_argument("--min_word_count", help="min word count (default 3)", default=3, type=int)
+    parser.add_argument("--workers", help="utilized cores count (default all)", default=multiprocessing.cpu_count(), type=int)
+    parser.add_argument("--sample", help="subsampling ratio (default 0.001)", default=0.001, type=float)
+    parser.add_argument("--negative", help="negative samples count (default 5)", default=5, type=int)
+    parser.add_argument("--seed", help="random seed (default 48)", default=48, type=int)
 
-        model = "ft_sg"
-    try:
-        use_defaults = bool(sys.argv[4])
-    except IndexError:
-        use_defaults = False
+    args = parser.parse_args()
 
-    if use_defaults:
-        window = 300
-        min_word_count = 3
-        workers = multiprocessing.cpu_count()
-        subsampling = 0.001
-        negative = 5
-        seed = 48
+    inp = args.i
+    out = args.o
+    if int(args.ft):
+        model = "ft_"
     else:
-        window = int(input("Window size (default 300): ") or 300)
-        min_word_count = int(input("min_word_count (default 3): ") or 3)
-        workers = int(input("Workers (default all): ") or multiprocessing.cpu_count())
-        subsampling = float(input("Subsampling ratio (default 1e-3): ") or 0.001)
-        negative = int(input("Negative samples (default 5): ") or 5)
-        seed = int(input("random_seed (default 48): ") or 48)
+        model = "w2v_"
+
+    if int(args.sg):
+        model += "sg"
+    else:
+        model += "cbow"
+
+
+
+    window = args.window
+    min_word_count = args.min_word_count
+    workers = args.workers
+    subsampling = args.sample
+    negative = args.negative
+    seed = args.seed
 
     we = WordEmbeddings(inp, out,
                         model_name=model,
