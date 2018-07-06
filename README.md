@@ -9,10 +9,7 @@
 wget -P data/  https://dumps.wikimedia.org/enwiki/latest/<wiki_dump_name>
 ```
 
-<p>
-e.g. <wiki_dump_name> enwiki-latest-pages-articles1.xml-p10p30302.bz2
-  </br>
-Dumps should be in <bold>bz2</bold> format, as they are processed using: </p>
+Dumps should be in _bz2_ format, as they are processed using
 
 ```python
 from gensim.corpora import WikiCorpus
@@ -24,8 +21,8 @@ python3.5 train.py <input (bz2 wiki dump) path> <output (trained model) path>
 ```
 ### CLI Arguments:
 
-- `i`: input (bz2 wiki dump) path *required
-- `o`: output (trained model) path *required
+- `i`: input (bz2 wiki dump) path *required* e.g. enwiki-latest-pages-articles1.xml-p10p30302.bz2
+- `o`: output (trained model) path *required* 
 - `--ft`: use FastText (bool: default True)
 - `--sg`: use SkipGram (bool: default True)
 - `--window`: context window size (int: default 300)
