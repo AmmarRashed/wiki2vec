@@ -131,7 +131,7 @@ class WordEmbeddings(object):
         return [word, nb_word]
 
     def get_XY(self, sentences, word2int):
-        data = Parallel(n_jobs=-1)(delayed(g)(word, nb_word) for sentence in sentences
+        data = Parallel(n_jobs=-1)(delayed(self._)(word, nb_word) for sentence in sentences
                                    for i, word in enumerate(sentence)
                                    for nb_word in
                                    sentence[max(i - self.window, 0):min(i + self.window, len(sentence)) + 1] if
