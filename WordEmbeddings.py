@@ -13,6 +13,8 @@ from joblib import Parallel, delayed
 import numpy as np
 import tensorflow as tf
 
+import pickle
+
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
 class WordEmbeddings(object):
@@ -174,6 +176,9 @@ class WordEmbeddings(object):
                 vectors = sess.run(W1 + b1)
 
         self.vectors = vectors
+
+        pickle.dump(self.vectors, open(self.out, "w"))
+
 
     def _train_tf(self, sentences=None):
         words, word2int, int2word = self.build_vocab()
