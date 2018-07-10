@@ -201,5 +201,5 @@ class WordEmbeddings(object):
         if self.tf:
             self._train_tf(sentences)
         else:
-            self.train(sentences)
+            self._train(sentences)
         print("Training {0} took: {1} seconds".format(self.model_name, time.time()-start))
