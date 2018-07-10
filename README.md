@@ -42,7 +42,7 @@ python3.5 train.py <input (bz2 wiki dump) path> <output (trained model) path>
 - <a href="https://radimrehurek.com/gensim/"> gensim </a>
 - <a href="https://www.nltk.org/"> NLTK </a>
 - <a href="https://pythonhosted.org/joblib/"> joblib </a>
-- <a href="https://www.tensorflow.org/"> TensorFlow (if using `--tf True`)</a>
+- <a href="https://www.tensorflow.org/"> TensorFlow  </a>(if using `--tf True`)
 
 ## Useful Tutorials
 
