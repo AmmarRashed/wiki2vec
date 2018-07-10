@@ -1,13 +1,16 @@
 import ntpath,os
 import multiprocessing
 
-
+import logging
 import re
 import time
 
 from gensim.corpora import WikiCorpus
 from gensim.models.phrases import Phraser, Phrases
 
+
+
+logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
 class WordEmbeddings(object):
     def __init__(self, inp, out, model_name="ft_sg",
