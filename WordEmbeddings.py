@@ -105,10 +105,9 @@ class WordEmbeddings(object):
     def build_vocab(self, sentences=None):
         if sentences is None:
             if self.sentences is None:
-                sentences = self.sentences
-            else:
                 sentences = self.get_sentences()
-
+            else:
+                sentences = self.sentences
         words = set()
         word2int = dict()
         int2word = dict()
@@ -194,9 +193,9 @@ class WordEmbeddings(object):
     def train(self, sentences=None):
         if sentences is None:
             if self.sentences is None:
-                sentences = self.sentences
-            else:
                 sentences = self.get_sentences()
+            else:
+                sentences = self.sentences
 
         start = time.time()
         if self.tf:
