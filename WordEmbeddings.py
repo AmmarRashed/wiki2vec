@@ -152,7 +152,8 @@ class WordEmbeddings(object):
         x = tf.placeholder(tf.float32, shape=(None, self.vocab_size))
         y_label = tf.placeholder(tf.float32, shape=(None, self.vocab_size))
 
-        W1 = tf.Variable(tf.random_normal([self.vocab_size, self.size]))
+
+        W1 = tf.Variable(tf.random_uniform([self.vocab_size, self.size], -1.0, 1.0))
         b1 = tf.Variable(tf.random_normal([self.size]))
         h = tf.add(tf.matmul(x, W1), b1)
 

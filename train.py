@@ -12,7 +12,7 @@ if __name__ == '__main__':
     parser.add_argument("--min_word_count", help="min word count (int: default 3)", default=3, type=int)
     parser.add_argument("--workers", help="utilized cores count (int: default all)",
                         default=multiprocessing.cpu_count(), type=int)
-    parser.add_argument("--sample", help="Sub-sampling ratio (float: default 0.001)", default=0.001, type=float)
+    parser.add_argument("--sample", help="sub-sampling ratio (float: default 0.001)", default=0.001, type=float)
     parser.add_argument("--negative", help="negative samples count (int: default 5)", default=5, type=int)
     parser.add_argument("--seed", help="random seed (int: default 48)", default=48, type=int)
     parser.add_argument("--tf", help="Use TensorFlow (bool: default False)", default=False, type=bool)
