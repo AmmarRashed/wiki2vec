@@ -177,7 +177,7 @@ class WordEmbeddings(object):
 
         self.vectors = vectors
 
-        pickle.dump(self.vectors, open(self.out, "w"))
+        pickle.dump(self.vectors, open(self.out, "w"))  
 
 
     def _train_tf(self, sentences=None):
