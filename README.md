@@ -46,6 +46,7 @@ python3.5 train.py <input (bz2 wiki dump) path> <output (trained model) path>
 
 ## Useful Tutorials
 
+- <a href="https://www.tensorflow.org/tutorials/word2vec"> TensorFlow: Vector Representations of Words</a>
 - <a href="https://towardsdatascience.com/learn-word2vec-by-implementing-it-in-tensorflow-45641adaf2ac">Learn Word2Vec by implementing it in tensorflow</a>
 - <a href="https://youtu.be/pY9EwZ02sXU">Siraj Raval Word2Vec Live tutorial</a>
 - <a href="http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model"> Chris McCormick Skip-Gram for theory </a>
