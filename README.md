@@ -39,9 +39,10 @@ python3.5 train.py <input (bz2 wiki dump) path> <output (trained model) path>
 ## Dependancies
 
 **Tested on Python 3.5
+- <a href="http://www.numpy.org/"> NumPy </a>
 - <a href="https://radimrehurek.com/gensim/"> gensim </a>
 - <a href="https://www.nltk.org/"> NLTK </a>
-- <a href="https://pythonhosted.org/joblib/"> joblib </a>
+- <a href="https://pythonhosted.org/joblib/"> Joblib (optional)</a>
 - <a href="https://www.tensorflow.org/"> TensorFlow  </a>(if using `--tf True`)
 
 ## Useful Tutorials
