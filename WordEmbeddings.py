@@ -156,7 +156,7 @@ class WordEmbeddings(object):
 
         W1 = tf.Variable(tf.random_uniform([self.vocab_size, self.size], -1.0, 1.0))
         b1 = tf.Variable(tf.random_normal([self.size]))
-        h = tf.add(tf.matmul(x, W1), b1)
+        h = tf.nn.dropout(tf.nn.relu(tf.add(tf.matmul(x, W1), b1)), keep_prob=0.5)
 
         W2 = tf.Variable(tf.random_normal([self.size, self.vocab_size]))
         b2 = tf.Variable(tf.random_normal([self.vocab_size]))
